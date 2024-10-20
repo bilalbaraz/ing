@@ -36,6 +36,7 @@ export class EmployeeForm extends LitElement {
       store.dispatch(updateEmployee({ ...this.employee, ...employeeData }));
       alert('Çalışan güncellendi.');
     } else {
+      employeeData.id = this.generateUniqueId();
       store.dispatch(addEmployee(employeeData));
       alert('Çalışan eklendi.');
     }
@@ -48,11 +49,20 @@ export class EmployeeForm extends LitElement {
 
     if (this.employeeId) {
       this.isEdit = true;
-      this.employee = {};
+      this.loadEmployeeData(this.employeeId);
     } else {
       this.isEdit = false;
       this.employee = {};
     }
+  }
+
+  loadEmployeeData(id) {
+    this.employee = store.getState().employees.find(emp => emp.id === id);
+    this.requestUpdate();
+  }
+
+  generateUniqueId() {
+    return '_' + Math.random().toString(36).substr(2, 9);
   }
 
   render() {
@@ -90,6 +100,15 @@ export class EmployeeForm extends LitElement {
             .value="${this.employee.emailAddress || ''}"
             required
           />
+          </label>
+          <label>
+            Phone Number:
+            <input
+              type="tel"
+              name="phoneNumber"
+              .value="${this.employee.phoneNumber || ''}"
+              required
+            />
           </label>
         </div>
         <button type="submit">
