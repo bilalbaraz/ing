@@ -5,7 +5,6 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_EMPLOYEE':
-            console.log(action);
             if (state.employees.find(emp => emp.email === action.payload.emailAddress)) {
                 alert('Bu e-posta adresi zaten kullanılıyor.');
                 return state;

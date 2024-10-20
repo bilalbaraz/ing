@@ -11,6 +11,16 @@ export class EmployeeForm extends LitElement {
         border: solid 1px gray;
         padding: 16px;
       }
+      input, select {
+        width: 100%;
+        padding: 5px;
+      }
+      .field {
+        margin-bottom: 10px;
+      }
+      .field > input {
+        margin-top: 10px;
+      }
     `;
   }
 
@@ -69,7 +79,7 @@ export class EmployeeForm extends LitElement {
     return html`
       <h1>${this.isEdit ? 'Çalışanı Düzenle' : 'Yeni Çalışan Ekle'}</h1>
       <form @submit="${this.handleSubmit}">
-        <div>
+        <div class="field">
           <label>
           First Name:
           <input
@@ -80,7 +90,7 @@ export class EmployeeForm extends LitElement {
           />
           </label>
         </div>
-        <div>
+        <div class="field">
           <label>
           Last Name:
           <input
@@ -91,7 +101,7 @@ export class EmployeeForm extends LitElement {
           />
           </label>
         </div>
-        <div>
+        <div class="field">
           <label>
           E-mail Address:
           <input
@@ -101,15 +111,49 @@ export class EmployeeForm extends LitElement {
             required
           />
           </label>
-          <label>
-            Phone Number:
-            <input
-              type="tel"
-              name="phoneNumber"
-              .value="${this.employee.phoneNumber || ''}"
-              required
-            />
-          </label>
+          <div class="field">
+            <label>
+              Phone Number:
+              <input
+                type="tel"
+                name="phoneNumber"
+                .value="${this.employee.phoneNumber || ''}"
+                required
+              />
+            </label>
+          </div>
+          <div class="field">
+            <label>
+              Date of Birth:
+              <input
+                type="text"
+                name="dateOfBirth"
+                .value="${this.employee.dateOfBirth || ''}"
+                required
+              />
+            </label>
+          </div>
+          <div class="field">
+            <label>
+              Date of Employment:
+              <input
+                type="text"
+                name="dateOfEmployment"
+                .value="${this.employee.dateOfEmployment || ''}"
+                required
+              />
+            </label>
+          </div>
+          <div class="field">
+            <label>
+              Department:
+              <select name="department" .value="${this.employee.department || ''}">
+                <option value="">Seçiniz</option>
+                <option value="Analytics">Analytics</option>
+                <option value="Tech">Tech</option>
+              </select>
+            </label>
+          </div>
         </div>
         <button type="submit">
           ${this.isEdit ? 'Güncelle' : 'Ekle'}
