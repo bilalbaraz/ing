@@ -14,17 +14,83 @@ export class EmployeeForm extends LitElement {
   static get properties() {
     return {
       employeeId: { type: String },
+      isEdit: { type: Boolean },
     };
   }
 
   constructor() {
     super();
     this.employeeId = null;
+    this.isEdit = false;
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const employeeData = Object.fromEntries(formData.entries());
+
+    if (this.isEdit) {
+      alert('Çalışan güncellendi.');
+    } else {
+      alert('Çalışan eklendi.');
+    }
+
+    Router.go('/');
+  }
+
+  onBeforeEnter(location, commands, router) {
+    this.employeeId = location.params.id || null;
+
+    if (this.employeeId) {
+      this.isEdit = true;
+      this.employee = {};
+    } else {
+      this.isEdit = false;
+      this.employee = {};
+    }
   }
 
   render() {
     return html`
-      <h1>Employee Form ${this.employeeId}</h1>
+      <h1>${this.isEdit ? 'Çalışanı Düzenle' : 'Yeni Çalışan Ekle'}</h1>
+      <form @submit="${this.handleSubmit}">
+        <div>
+          <label>
+          First Name:
+          <input
+            type="text"
+            name="firstName"
+            .value="${this.employee.firstName || ''}"
+            required
+          />
+          </label>
+        </div>
+        <div>
+          <label>
+          Last Name:
+          <input
+            type="text"
+            name="lastName"
+            .value="${this.employee.lastName || ''}"
+            required
+          />
+          </label>
+        </div>
+        <div>
+          <label>
+          E-mail Address:
+          <input
+            type="email"
+            name="emailAddress"
+            .value="${this.employee.emailAddress || ''}"
+            required
+          />
+          </label>
+        </div>
+        <button type="submit">
+          ${this.isEdit ? 'Güncelle' : 'Ekle'}
+        </button>
+      </form>
     `;
   }
 }
