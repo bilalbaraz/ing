@@ -1,5 +1,7 @@
 import {LitElement, html, css} from 'lit';
 import { Router } from '@vaadin/router';
+import { addEmployee, updateEmployee } from '../state/actions.js';
+import { store } from '../state/store.js';
 
 export class EmployeeForm extends LitElement {
   static get styles() {
@@ -31,8 +33,10 @@ export class EmployeeForm extends LitElement {
     const employeeData = Object.fromEntries(formData.entries());
 
     if (this.isEdit) {
+      store.dispatch(updateEmployee({ ...this.employee, ...employeeData }));
       alert('Çalışan güncellendi.');
     } else {
+      store.dispatch(addEmployee(employeeData));
       alert('Çalışan eklendi.');
     }
 

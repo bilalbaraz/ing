@@ -1,8 +1,9 @@
 import {LitElement, html, css} from 'lit';
 import { store } from '../state/store.js';
+import { connect } from 'pwa-helpers/connect-mixin.js';
 import './employee-record.js';
 
-export class EmployeeRecordList extends LitElement {
+export class EmployeeRecordList extends connect(store)(LitElement) {
   static get styles() {
     return css`
       :host {
@@ -21,10 +22,15 @@ export class EmployeeRecordList extends LitElement {
 
   constructor() {
     super();
-    this.employees = [
+    this.employees = [];
+    /*this.employees = [
       {id: 1, firstName: 'Bilal', lastName: 'Baraz', phoneNumber: '+905557543342', emailAddress: 'bilalbaraz@windowslive.com', dateOfBirth: '24/08/1993', dateOfEmployment: '24/08/2024', department: 'Tech'},
       {id: 2, firstName: 'Burhan', lastName: 'Baraz', phoneNumber: '+905557543341', emailAddress: 'burhanbaraz@email.com', dateOfBirth: '24/08/1984', dateOfEmployment: '23/08/2024', department: 'Analytics'},
-    ];
+    ];*/
+  }
+
+  stateChanged(state) {
+    this.employees = state.employees || [];
   }
 
   render() {

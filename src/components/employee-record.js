@@ -1,7 +1,10 @@
 import {LitElement, html, css} from 'lit';
 import { Router } from '@vaadin/router';
+import { store } from '../state/store.js';
+import { connect } from 'pwa-helpers/connect-mixin.js';
+import { deleteEmployee } from '../state/actions.js';
 
-export class EmployeeRecord extends LitElement {
+export class EmployeeRecord extends connect(store)(LitElement) {
   static get styles() {
     return css`
       div.employee-record {
@@ -71,6 +74,7 @@ export class EmployeeRecord extends LitElement {
 
   onDelete() {
     if (confirm('Silmek üzeresiniz. Emin misiniz?')) {
+      store.dispatch(deleteEmployee(this.employee.id));
       alert('Silindi');
     }
   }
