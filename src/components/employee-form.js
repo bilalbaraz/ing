@@ -12,16 +12,19 @@ export class EmployeeForm extends LitElement {
   }
 
   static get properties() {
-    return {};
+    return {
+      employeeId: { type: String },
+    };
   }
 
   constructor() {
     super();
+    this.employeeId = null;
   }
 
   render() {
     return html`
-      <h1>Employee Form</h1>
+      <h1>Employee Form ${this.employeeId}</h1>
     `;
   }
 }
