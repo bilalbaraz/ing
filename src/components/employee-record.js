@@ -18,6 +18,25 @@ export class EmployeeRecord extends LitElement {
         justify-content: center;
         align-items: center;
       }
+      div.employee-record-actions {
+        display: flex;
+      }
+      div.employee-record-action-edit {
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+      }
+      div.employee-record-action-edit > a {
+        color: #0000ff;
+      }
+      div.employee-record-action-delete {
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+      }
+      div.employee-record-action-delete > a {
+        color: #ff0000;
+      }
     `;
   }
 
@@ -36,7 +55,14 @@ export class EmployeeRecord extends LitElement {
     return html`
       <div class="employee-record">
         <div class="employee-record-content"><h1>${this.employee.name}</h1></div>
-        <div class="employee-record-actions">Actions</div>
+        <div class="employee-record-actions">
+          <div class="employee-record-action-edit">
+            <a href="">Edit</a>
+          </div>
+          <div class="employee-record-action-delete">
+            <a href="">Delete</a>
+          </div>
+        </div>
       </div>
     `;
   }

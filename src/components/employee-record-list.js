@@ -20,7 +20,10 @@ export class EmployeeRecordList extends LitElement {
 
   constructor() {
     super();
-    this.employees = [];
+    this.employees = [
+      {name: 'Bilal'},
+      {name: 'Burhan'},
+    ];
   }
 
   render() {
