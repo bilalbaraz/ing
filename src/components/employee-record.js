@@ -13,16 +13,19 @@ export class EmployeeRecord extends LitElement {
   }
 
   static get properties() {
-    return {};
+    return {
+      employee: { type: Object },
+    };
   }
 
   constructor() {
     super();
+    this.employee = {};
   }
 
   render() {
     return html`
-      <h1>Employee Record</h1>
+      <h1>${this.employee.name}</h1>
     `;
   }
 }

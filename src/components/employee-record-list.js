@@ -14,17 +14,27 @@ export class EmployeeRecordList extends LitElement {
   }
 
   static get properties() {
-    return {};
+    return {
+      employees: { type: Array },
+    };
   }
 
   constructor() {
     super();
+    this.employees = [
+      {name: 'Bilal'},
+      {name: 'Burhan'},
+    ];
   }
 
   render() {
     return html`
       <h1>Employee Record List</h1>
-      <employee-record></employee-record>
+      ${this.employees.map(
+        employee => html`
+          <employee-record .employee="${employee}"></employee-record>
+        `
+      )}
     `;
   }
 }
