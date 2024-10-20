@@ -1,4 +1,5 @@
 import {LitElement, html, css} from 'lit';
+import { store } from '../state/store.js';
 import './employee-record.js';
 
 export class EmployeeRecordList extends LitElement {
