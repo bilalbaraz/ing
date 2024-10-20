@@ -7,7 +7,6 @@ export class EmployeeForm extends LitElement {
         display: block;
         border: solid 1px gray;
         padding: 16px;
-        max-width: 800px;
       }
     `;
   }

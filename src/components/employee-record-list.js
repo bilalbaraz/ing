@@ -8,7 +8,6 @@ export class EmployeeRecordList extends LitElement {
         display: block;
         border: solid 1px gray;
         padding: 16px;
-        max-width: 800px;
       }
     `;
   }
@@ -21,15 +20,12 @@ export class EmployeeRecordList extends LitElement {
 
   constructor() {
     super();
-    this.employees = [
-      {name: 'Bilal'},
-      {name: 'Burhan'},
-    ];
+    this.employees = [];
   }
 
   render() {
     return html`
-      <h1>Employee Record List</h1>
+      <h1>Employee Record List (${this.employees.length})</h1>
       ${this.employees.map(
         employee => html`
           <employee-record .employee="${employee}"></employee-record>

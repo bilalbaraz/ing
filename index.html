@@ -6,19 +6,19 @@
     <title>ING - Case Study</title>
     <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="./node_modules/lit/polyfill-support.js"></script>
-    <script type="module" src="src/components/action-menu.js"></script>
-    <script type="module" src="src/components/employee-form.js"></script>
-    <script type="module" src="src/components/employee-record-list.js"></script>
     <style>
       p {
         border: solid 1px blue;
         padding: 8px;
       }
+      .container {
+        display: flex;
+        flex-direction: column;
+      }
     </style>
   </head>
   <body>
-    <action-menu></action-menu>
-    <employee-form></employee-form>
-    <employee-record-list></employee-record-list>
+    <app-root></app-root>
+    <script type="module" src="src/app-root.js"></script>
   </body>
 </html>
