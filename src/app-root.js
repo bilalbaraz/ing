@@ -1,7 +1,7 @@
 import {LitElement, html, css} from 'lit';
 import { Router } from '@vaadin/router';
 import './components/action-menu.js';
-import './components/not-found.js';
+import './components/page-not-found.js';
 import './components/employee-record-list.js';
 import './components/employee-form.js';
 

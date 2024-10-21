@@ -1,6 +1,6 @@
 import {LitElement, html} from 'lit';
 
-export class NotFound extends LitElement {
+export class PageNotFound extends LitElement {
   render() {
     return html`
       <h2>Page Not Found</h2>
@@ -10,4 +10,4 @@ export class NotFound extends LitElement {
   }
 }
 
-window.customElements.define('page-not-found', NotFound);
+window.customElements.define('page-not-found', PageNotFound);
