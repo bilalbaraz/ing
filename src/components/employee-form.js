@@ -44,11 +44,11 @@ export class EmployeeForm extends LitElement {
 
     if (this.isEdit) {
       store.dispatch(updateEmployee({ ...this.employee, ...employeeData }));
-      alert('Çalışan güncellendi.');
+      alert('Employee was updated');
     } else {
       employeeData.id = this.generateUniqueId();
       store.dispatch(addEmployee(employeeData));
-      alert('Çalışan eklendi.');
+      alert('Employee was added');
     }
 
     Router.go('/');
@@ -77,7 +77,7 @@ export class EmployeeForm extends LitElement {
 
   render() {
     return html`
-      <h1>${this.isEdit ? 'Çalışanı Düzenle' : 'Yeni Çalışan Ekle'}</h1>
+      <h1>${this.isEdit ? 'Edit Employee' : 'Add New Employee'}</h1>
       <form @submit="${this.handleSubmit}">
         <div class="field">
           <label>
@@ -154,9 +154,20 @@ export class EmployeeForm extends LitElement {
               </select>
             </label>
           </div>
+          <div class="field">
+            <label>
+              Position:
+              <select name="position" .value="${this.employee.position || ''}">
+                <option value="">Seçiniz</option>
+                <option value="Junior">Junior</option>
+                <option value="Medior">Medior</option>
+                <option value="Senior">Senior</option>
+              </select>
+            </label>
+          </div>
         </div>
         <button type="submit">
-          ${this.isEdit ? 'Güncelle' : 'Ekle'}
+          ${this.isEdit ? 'Update' : 'Add'}
         </button>
       </form>
     `;

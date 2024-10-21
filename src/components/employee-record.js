@@ -90,6 +90,7 @@ export class EmployeeRecord extends connect(store)(LitElement) {
             <div class="employee-record-content-personal-date-of-birth">${this.employee.dateOfBirth}</div>
           </div>
           <div class="employee-record-content-company-department"><b>Department:</b><br>${this.employee.department}</div>
+          <div class="employee-record-content-company-department"><b>Position:</b><br>${this.employee.position}</div>
           <div class="employee-record-content-company-date-of-employment"><b>Date of Employment:</b><br>${this.employee.dateOfEmployment}</div>
         </div>
         <div class="employee-record-actions">
